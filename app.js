@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 
 const express = require('express');
@@ -29,5 +30,5 @@ app.use("/",errorController.error)
 
 
 mongoConnect(client => {
-    app.listen(7890);
+    app.listen(process.env.PORT || 7890 );
 });
