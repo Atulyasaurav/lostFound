@@ -1,0 +1,228 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<div class="main-content" id="mainContent">
+    <main>
+        <div>
+            <style>
+                /* Global Styles */
+                body {
+                    font-family: 'Poppins', sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background: linear-gradient(180deg, #1e1e2f, #121212);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                    flex-direction: column;
+                    color: #fff;
+                }
+
+                /* Form Container */
+                form {
+                    background: linear-gradient(145deg, #29293b, #1e1e2f);
+                    padding: 25px;
+                    border-radius: 12px;
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 -2px 4px rgba(255, 255, 255, 0.1);
+                    max-width: 600px;
+                    width: 100%;
+                    margin: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                }
+
+                .form-control {
+                    margin-bottom: 20px;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .form-control label {
+                    margin-bottom: 8px;
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: #00c6ff;
+                }
+
+                .form-control input,
+                .form-control textarea,
+                .form-control select {
+                    padding: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 5px;
+                    font-size: 16px;
+                    outline: none;
+                    color: #fff;
+                    background: #1e1e2f;
+                    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                }
+
+                .form-control input:focus,
+                .form-control textarea:focus,
+                .form-control select:focus {
+                    border-color: #00c6ff;
+                    box-shadow: 0 0 10px rgba(0, 198, 255, 0.8);
+                }
+
+                .form-control select {
+                    cursor: pointer;
+                }
+
+                .form-control textarea {
+                    resize: none;
+                }
+
+                .btn {
+                    padding: 12px;
+                    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+                    color: white;
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 16px;
+                    width: 100%;
+                    transition: background 0.3s, transform 0.3s;
+                }
+
+                .btn:hover {
+                    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+                    transform: translateY(-3px);
+                }
+
+                /* Image Preview Section */
+                .image-preview-container {
+                    position: relative;
+                    margin-top: 20px;
+                    text-align: center;
+                }
+
+                .image-preview {
+                    display: none;
+                    max-width: 100%;
+                    height: auto;
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 8px;
+                    margin-top: 10px;
+                }
+
+                .delete-btn {
+                    position: absolute;
+                    top: -10px;
+                    right: -10px;
+                    background: #ff4b2b;
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+
+                .delete-btn:hover {
+                    background: darkred;
+                }
+
+                /* Media Queries for Responsiveness */
+                @media (max-width: 768px) {
+                    form {
+                        padding: 20px;
+                    }
+
+                    .form-control input,
+                    .form-control textarea,
+                    .form-control select {
+                        font-size: 14px;
+                    }
+
+                    .btn {
+                        font-size: 14px;
+                    }
+                }
+            </style>
+
+            <form action="/admin/add-product" method="POST" enctype="multipart/form-data">
+                <div class="form-control">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" name="title" id="title" placeholder="Enter item name">
+                </div>
+                <div class="form-control">
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="">-- Select Category --</option>
+                        <option value="lost">Lost</option>
+                        <option value="found">Found</option>
+                        <option value="donation">Donation</option>
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label for="item-category">Item Category</label>
+                    <select name="itemCategory" id="itemCategory">
+                        <option value="">-- Select Item Category --</option>
+                        <option value="id-card">Id-Card</option>
+                        <option value="charger">Charger</option>
+                        <option value="bottle">Bottle</option>
+                        <option value="earBud">Ear-Bud</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label for="contact">Contact Number</label>
+                    <input type="number" name="contact" id="contact" placeholder="Enter contact number">
+                </div>
+                <div class="form-control">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" rows="5" placeholder="Enter item description"></textarea>
+                </div>
+                <div class="form-control">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)">
+                </div>
+                <div class="image-preview-container">
+                    <img id="imagePreview" class="image-preview">
+                    <button type="button" id="deleteButton" class="delete-btn" onclick="deleteImage()">X</button>
+                </div>
+                <button class="btn" type="submit">Add Product</button>
+            </form>
+
+            <script>
+                function previewImage(event) {
+                    const fileInput = event.target;
+                    const imagePreview = document.getElementById('imagePreview');
+                    const deleteButton = document.getElementById('deleteButton');
+
+                    const file = fileInput.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            imagePreview.src = e.target.result;
+                            imagePreview.style.display = 'block';
+                            deleteButton.style.display = 'flex';
+                            fileInput.style.display = 'none';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+
+                function deleteImage() {
+                    const fileInput = document.getElementById('image');
+                    const imagePreview = document.getElementById('imagePreview');
+                    const deleteButton = document.getElementById('deleteButton');
+
+                    fileInput.value = '';
+                    imagePreview.src = '';
+                    imagePreview.style.display = 'none';
+                    deleteButton.style.display = 'none';
+                    fileInput.style.display = 'block';
+                }
+            </script>
+        </div>
+    </main>
+</div>
+<%- include('../includes/end.ejs') %>

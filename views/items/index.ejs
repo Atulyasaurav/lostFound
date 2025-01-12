@@ -1,0 +1,122 @@
+<%- include('../includes/head.ejs') %>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(180deg, #1e1e2f, #121212);
+        color: #ffffff;
+    }
+
+    .main-content {
+        padding: 50px;
+        text-align: center;
+    }
+
+    .items-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    .item {
+        background: linear-gradient(145deg, #29293b, #1e1e2f);
+        border-radius: 12px;
+        padding: 20px;
+        width: 280px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 -2px 4px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: left;
+    }
+
+    .item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8), 0 -3px 5px rgba(255, 255, 255, 0.2);
+    }
+
+    .item h2 {
+        font-size: 22px;
+        margin: 0 0 10px;
+        background: linear-gradient(90deg, #00c6ff, #0072ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .item p {
+        margin: 8px 0;
+        font-size: 14px;
+        color: #cfcfcf;
+    }
+
+    .item img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-top: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .no-items {
+        text-align: center;
+        font-size: 18px;
+        color: #cccccc;
+        margin-top: 20px;
+    }
+
+    /* Buttons Styling */
+    .item button {
+        background: linear-gradient(90deg, #ff416c, #ff4b2b);
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.2s ease;
+    }
+
+    .item button:hover {
+        background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    }
+
+    /* Tag Styling */
+    .tag {
+        display: inline-block;
+        background: linear-gradient(90deg, #00ffcc, #00b3b3);
+        color: #000;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<div class="main-content" id="mainContent">
+    <% if (items && items.length > 0) { %>
+        <div class="items-container">
+            <% items.forEach(item => { %>
+                <div class="item">
+                    <div class="tag"><%= item.itemCategory %></div>
+                    <h2><%= item.itemName %></h2>
+                    <p><strong>Contact:</strong> <%= item.contactNumber %></p>
+                    <p><strong>Description:</strong> <%= item.description %></p>
+                    <% if (item.urlImage) { %>
+                        <img src="<%= item.urlImage %>" alt="<%= item.itemName %>">
+                    <% } %>
+                    <button>View Details</button>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p class="no-items">No items available.</p>
+    <% } %>
+</div>
+
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,223 @@
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+        background: linear-gradient(135deg, #000000, #2d2d2d);
+        color: #fff;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(25, 25, 25, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        transition: background 0.3s ease;
+    }
+
+    .navbar:hover {
+        background: rgba(40, 40, 40, 0.95);
+    }
+
+    .logo {
+        color: #ff4545;
+        font-size: 24px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+        color: #FFD700;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        padding: 10px 20px;
+    }
+
+    .nav-links a {
+        color: #bbb;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: #FFD700;
+        transform: scale(1.1);
+    }
+
+    /* Active link styling */
+    .nav-links .active {
+        color: #ff4545;
+        font-weight: bold;
+        border-bottom: 2px solid #ff4545;
+    }
+
+    /* Hamburger Styling */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Mobile view */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background: linear-gradient(135deg, #333, #111);
+        transition: left 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+        z-index: 999;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-menu.open {
+        left: 0;
+    }
+
+    .nav-menu .nav-links {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        list-style: none;
+    }
+
+    .nav-menu .nav-links li {
+        padding: 15px 20px;
+    }
+
+    .nav-menu .nav-links a {
+        color: #bbb;
+        text-decoration: none;
+        font-size: 18px;
+        display: block;
+        text-align: left;
+        transition: color 0.3s ease;
+    }
+
+    .nav-menu .nav-links a:hover {
+        color: #FFD700;
+        font-weight: bold;
+    }
+
+    /* Content shift for main content */
+    .main-content {
+        margin-top: 60px;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-open .main-content {
+        transform: translateX(250px);
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .nav-menu {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+    }
+</style>
+
+<div class="navbar">
+    <a href="/" class="logo">Lost & Found</a>
+    <ul class="nav-links">
+        <li><a href="/add-item" class="<%= path === '/add-item' ? 'active' : '' %>">Add-Item</a></li>
+        <li><a href="/lost-item" class="<%= path === '/lost-item' ? 'active' : '' %>">Lost-Item</a></li>
+        <li><a href="/found-item" class="<%= path === '/found-item' ? 'active' : '' %>">Found-Item</a></li>
+        <li><a href="/donate" class="<%= path === '/donate' ? 'active' : '' %>">Donated-Items</a></li>
+        <li><a href="/about" class="<%= path === '/about' ? 'active' : '' %>">About</a></li>
+        <li><a href="/contact" class="<%= path === '/contact' ? 'active' : '' %>">Contact-Us</a></li>
+        <li><a href="/admin/login" class="<%= path === '/admin/login' ? 'active' : '' %>">Admin Login</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+            <li><a href="/add-item" class="<%= path === '/add-item' ? 'active' : '' %>">Add-Item</a></li>
+            <li><a href="/lost-item" class="<%= path === '/lost-item' ? 'active' : '' %>">Lost-Item</a></li>
+            <li><a href="/found-item" class="<%= path === '/found-item' ? 'active' : '' %>">Found-Item</a></li>
+            <li><a href="/donate" class="<%= path === '/donate' ? 'active' : '' %>">Donated-Items</a></li>
+            <li><a href="/about" class="<%= path === '/about' ? 'active' : '' %>">About</a></li>
+            <li><a href="/contact" class="<%= path === '/contact' ? 'active' : '' %>">Contact-Us</a></li>
+            <li><a href="/admin/login" class="<%= path === '/admin/login' ? 'active' : '' %>">Admin Login</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleMenu() {
+        const navMenu = document.getElementById("navMenu");
+        const body = document.body;
+
+        navMenu.classList.toggle("open");
+        body.classList.toggle("menu-open");
+
+        const hamburgerDivs = document.querySelectorAll(".hamburger div");
+        hamburgerDivs.forEach(div => {
+            div.style.transition = "transform 0.3s ease";
+        });
+
+        if (navMenu.classList.contains("open")) {
+            hamburgerDivs[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+            hamburgerDivs[1].style.opacity = "0";
+            hamburgerDivs[2].style.transform = "rotate(-45deg) translate(5px, -5px)";
+        } else {
+            hamburgerDivs[0].style.transform = "rotate(0) translate(0, 0)";
+            hamburgerDivs[1].style.opacity = "1";
+            hamburgerDivs[2].style.transform = "rotate(0) translate(0, 0)";
+        }
+    }
+</script>

@@ -1,0 +1,131 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/contact.css">
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+<style>
+    body {
+        background-color: #1e1e2f; /* Rich purple background */
+        color: #ffffff; /* White text for contrast */
+        font-family: Arial, sans-serif;
+    }
+
+    .contact-container {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .image-container {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-container {
+        flex: 1;
+        background-color: #292943; /* Slightly lighter purple for form background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-container h2 {
+        margin-bottom: 20px;
+        color: #ffc107; /* Accent color for headings */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #ffffff;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #444466;
+        border-radius: 5px;
+        background-color: #1e1e2f;
+        color: #ffffff;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #ffc107;
+        box-shadow: 0 0 5px #ffc107;
+    }
+
+    .submit-btn {
+        background-color: #ffc107; /* Accent color */
+        color: #1e1e2f;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .submit-btn:hover {
+        background-color: #e6a700;
+    }
+
+    .clearfix {
+        content: "";
+        clear: both;
+        display: table;
+        width: 80%;
+        margin: 0 auto;
+    }
+</style>
+
+<div class="main-content" id="mainContent">
+    <main>
+
+        <div class="contact-container clearfix">
+            <div class="image-container">
+                <img src="https://img.freepik.com/free-vector/smart-app-icons-vector-sketch-app-icon-set-flat-style-with-shadows_460848-15486.jpg?t=st=1736705844~exp=1736709444~hmac=5810a5d1b0699187ee81e4709c2f4cd0348dd39408c29c025dc46a48fa9e500d&w=826" alt="Contact Image">
+            </div>
+
+            <div class="form-container">
+                <form action="/submit-contact" method="POST">
+                    <h2>Contact Us</h2>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact No:</label>
+                        <input type="tel" id="contact" name="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue">Issue:</label>
+                        <input type="text" id="issue" name="issue" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<%- include('../includes/end.ejs') %>
+</body>

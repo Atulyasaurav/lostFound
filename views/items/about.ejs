@@ -1,0 +1,116 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        color: #fff;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .avatar {
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+
+    .avatar img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid #6c63ff;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .avatar:hover img {
+        transform: scale(1.1) rotate(10deg);
+        box-shadow: 0 10px 30px rgba(108, 99, 255, 0.7);
+    }
+
+    .text h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #6c63ff;
+        margin-bottom: 20px;
+    }
+
+    .text p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #dcdcdc;
+        margin-bottom: 20px;
+    }
+
+    .contact a {
+        display: inline-block;
+        background: linear-gradient(90deg, #6c63ff, #9d65ff);
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.5);
+    }
+</style>
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<div class="main-content" id="mainContent">
+    <main>
+        <div class="about-container">
+            <div class="card">
+                <!-- Avatar Section -->
+                <div class="avatar">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.S3XyfwAcp03WUL8iC3kb7gHaHa%26pid%3DApi&f=1&ipt=f4d6453c14a4698754842992652678d5920772b73228afefb988164f3ea0f3b4&ipo=images" alt="Developer Avatar">
+                </div>
+
+                <!-- Developer Description Section -->
+                <div class="text">
+                    <h2>About Us</h2>
+                    <p>
+                        Welcome to our Lost and Found platform! Our goal is to make it easy for students to report lost or found items on our campus. Whether you've lost something valuable or found an item, this platform allows you to upload details and help return items to their rightful owners.
+                    </p>
+                    <p>
+                        We are committed to providing a seamless and community-driven experience that helps everyone stay connected and organized.
+                    </p>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="contact">
+                    <a href="mailto:atulyasaurav1@gmail.com">📧 Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<%- include('../includes/end.ejs') %>

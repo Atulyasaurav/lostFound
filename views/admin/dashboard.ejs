@@ -1,0 +1,140 @@
+<%- include('../includes/head.ejs') %>
+<style>
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f9;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .items-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .item {
+        background-color: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+
+    .item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .item h2 {
+        font-size: 20px;
+        margin: 15px 0 10px;
+        color: #444;
+    }
+
+    .item p {
+        margin: 5px 15px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .item .btn {
+        display: inline-block;
+        margin: 10px 5px;
+        padding: 10px 15px;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .btn-danger:hover {
+        background-color: #a71d2a;
+    }
+
+    .no-items {
+        text-align: center;
+        font-size: 16px;
+        color: #888;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .main-content {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<div class="main-content" id="mainContent">
+    <h1>Admin Items</h1>
+
+    <% if (items && items.length > 0) { %>
+        <div class="items-container">
+            <% items.forEach(item => { %>
+                <div class="item">
+                    <% if (item.urlImage) { %>
+                        <img src="<%= item.urlImage %>" alt="<%= item.itemName %>">
+                    <% } else { %>
+                        <img src="/default-image.jpg" alt="Default Image">
+                    <% } %>
+                    <h2><%= item.itemName %></h2>
+                    <p><strong>Item Category:</strong> <%= item.itemCategory %></p>
+                    <p><strong>Contact Number:</strong> <%= item.contactNumber %></p>
+                    <p><strong>Description:</strong> <%= item.description %></p>
+                    <form action="/admin/items/<%= item._id %>" method="post">
+                        <input type="hidden" value="<%= item.category %>" name="category"></input>
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <p class="no-items">No items available for donation.</p>
+    <% } %>
+</div>
+
+<%- include('../includes/end.ejs') %>

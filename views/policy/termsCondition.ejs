@@ -1,0 +1,114 @@
+<%- include('../includes/head.ejs') %>
+
+<head>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fc; /* Light background color */
+            color: #333; /* Dark text for better readability */
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #333; /* Dark color for title */
+            text-align: center;
+            margin-bottom: 40px; /* Spacing below the title */
+        }
+
+        .content {
+            background-color: black; /* White background for the content section */
+            padding: 30px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            max-width: 800px;
+            margin: 0 auto; /* Center content horizontally */
+        }
+
+        h2 {
+            font-size: 1.8rem; /* Heading size for subsections */
+            color: #007bff; /* Blue color for subsections */
+            margin-bottom: 10px; /* Spacing below the heading */
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6; /* Increased line height for readability */
+            margin-bottom: 20px; /* Spacing below paragraphs */
+        }
+
+        a {
+            color: #007bff; /* Blue color for links */
+            text-decoration: none;
+            transition: color 0.3s; /* Smooth transition on hover */
+        }
+
+        a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+        .footer {
+            background-color: #333; /* Dark background for the footer */
+            color: #fff; /* White text for contrast */
+            text-align: center;
+            padding: 15px 0;
+            font-size: 14px;
+            position: fixed; /* Fixed at the bottom of the page */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure footer stays on top */
+        }
+    </style>
+</head>
+
+<body>
+<%- include('../includes/navigation.ejs') %>
+
+<div class="main-content" id="mainContent">
+    <main>
+        <div class="content">
+            <h1 class="page-title">Terms and Conditions</h1>
+
+            <h2>1. Introduction</h2>
+            <p>These terms and conditions govern the use of the Lost and Found Portal. By using the platform, you agree to comply with these terms. If you do not agree with these terms, please do not use our platform.</p>
+
+            <h2>2. User Responsibilities</h2>
+            <p>As a user of the platform, you agree to:</p>
+            <ul>
+                <li>Upload only relevant and accurate information regarding lost or found items.</li>
+                <li>Not upload inappropriate content, including offensive or misleading images or information.</li>
+                <li>Ensure the contact number and other details provided are accurate for communication purposes.</li>
+            </ul>
+
+            <h2>3. No Liability</h2>
+            <p>As this project is a student initiative, I  am not liable for any errors, data loss, or misunderstandings. The platform is not responsible for the accuracy or authenticity of items listed on the portal.</p>
+
+            <h2>4. Privacy</h2>
+            <p>Your privacy is important to us. Please review our <a href="/privacy-policy">Privacy Policy</a> for information on how we handle your personal data.</p>
+
+            <h2>5. Modifications</h2>
+            <p>The platform reserves the right to modify or update these terms and conditions at any time. Any changes will be communicated on this page.</p>
+
+            <h2>6. Contact Us</h2>
+            <p>If you have any questions regarding these terms and conditions, please <a href="mailto:example@example.com">contact us</a>.</p>
+
+            <div class="footer">
+                &copy; 2025 Lost and Found Portal. All Rights Reserved.
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
+
