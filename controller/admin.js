@@ -23,8 +23,6 @@ exports.postAddItem = (req,res,next) => {
     const title = req.body.title;
     const contactNumber = req.body.contact;
     const description = req.body.description;
-    console.log(category,itemCategory,title,contactNumber,description);
-    console.log(req.body)
 
     // Check if file is uploaded
     if (!req.file) {
