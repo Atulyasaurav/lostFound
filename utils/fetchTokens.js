@@ -1,4 +1,5 @@
 const axios = require('axios');
+require('dotenv').config();
 
 async function fetchTokens(email, password) {
     const url = 'https://ckhtmevlcepvzkixgtxm.supabase.co/auth/v1/token?grant_type=password';

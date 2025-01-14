@@ -1,3 +1,4 @@
+require('dotenv').config();
 const LostItems = require("../models/lostItems");
 const FoundItems = require("../models/foundItems");
 const DonationItems = require("../models/donationItems");
@@ -10,8 +11,8 @@ const cloudinary = require('cloudinary').v2; // Cloudinary API
 // Cloudinary Configuration
 cloudinary.config({
     cloud_name: 'dfhzdqm2o',
-    api_key: process.env.cloudinaryApiKey,
-    api_secret: process.env.cloudinaryApiSecret,
+    api_key: process.env.CLOUDAPIKEY,
+    api_secret: process.env.CLOUDAPISECRET,
     secure: true,
 });
 
