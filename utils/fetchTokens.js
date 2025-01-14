@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function fetchTokens(email, password) {
     const url = 'https://ckhtmevlcepvzkixgtxm.supabase.co/auth/v1/token?grant_type=password';
-    const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNraHRtZXZsY2VwdnpraXhndHhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzYzNjM0NjEsImV4cCI6MjA1MTkzOTQ2MX0._f8wEbAtzMmzesm3UHxhffmw-b2UxAHXAAE0uOd1ODE";
+    const apiKey = process.env.API_KEY;
     console.log("fetchTOkens")
     try {
         const response = await axios.post(
